@@ -1,11 +1,22 @@
 import { WebSocketServer } from 'ws';
 
-import sample from '../sample/pre-endurance-trainings-21-21.json';
-
 const wss = new WebSocketServer({ port: 8080 });
 
-wss.on('connection', function connection(ws) {
+wss.on('connection', function connection(ws, req) {
   console.log('Client connected');
+
+  let sample: any; // This is bad, but it's just a sample
+
+  if (req.url === '/endurance') {
+    sample = require('../sample/endurance-timing.json');
+  } else if (req.url === '/training-1') {
+    sample = require('../sample/pre-endurance-trainings-20-55.json')
+  } else if (req.url === '/training-2') {
+    sample = require('../sample/pre-endurance-trainings-21-21.json')
+  } else {
+    console.error("No sample found for this URL");
+    return ws.close();
+  }
 
   let messageId = 1;
   let interval: NodeJS.Timeout;
