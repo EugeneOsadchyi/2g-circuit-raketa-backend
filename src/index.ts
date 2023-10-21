@@ -32,7 +32,6 @@ ws.on('open', () => {
 });
 
 ws.on('message', (data) => {
-  console.log('Received message:', data);
   stream.write(data + '\n');
 });
 
