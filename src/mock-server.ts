@@ -8,7 +8,7 @@ wss.on('connection', function connection(ws, req) {
   let sample: any; // This is bad, but it's just a sample
 
   if (req.url === '/endurance') {
-    sample = require('../sample/endurance-timing.json');
+    sample = require('../sample/endurance-timing-modified.json');
   } else if (req.url === '/training-1') {
     sample = require('../sample/pre-endurance-trainings-20-55.json')
   } else if (req.url === '/training-2') {
@@ -41,7 +41,7 @@ wss.on('connection', function connection(ws, req) {
         }
 
         ws.close();
-      }, 1000);
+      }, 5000);
     }
   });
 });
