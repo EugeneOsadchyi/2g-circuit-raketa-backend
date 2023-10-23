@@ -1,5 +1,7 @@
 node_modules
 
 sample/endurance-timing.json
+sample/race-22-10-2023.log
+
 logs
 .DS_Store

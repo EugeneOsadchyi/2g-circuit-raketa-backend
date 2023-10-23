@@ -1,30 +1,7 @@
 import { WebSocketServer } from 'ws';
-import { createReadStream } from 'node:fs';
-import { createInterface } from 'readline';
-import path from 'path';
+import { generatorFromJsonSample, generatorFromLogSample } from './utils/generators';
 
 const wss = new WebSocketServer({ port: 8080 });
-
-async function* generatorFromJsonSample(filePath: string): AsyncGenerator<string> {
-  const sample = require(path.join(__dirname, filePath));
-
-  for (let messageId = 1; messageId < sample._webSocketMessages.length; messageId++) {
-    yield sample._webSocketMessages[messageId].data;
-  }
-}
-
-async function* generatorFromLogSample(filePath: string): AsyncGenerator<string> {
-  const stream = createReadStream(path.join(__dirname, filePath));
-
-  const rl = createInterface({
-    input: stream,
-    crlfDelay: Infinity,
-  });
-
-  for await (const line of rl) {
-    yield line;
-  }
-}
 
 wss.on('connection', function connection(ws, req) {
   console.log('Client connected');
