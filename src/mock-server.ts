@@ -9,13 +9,13 @@ wss.on('connection', function connection(ws, req) {
   let sampleGenerator: AsyncGenerator<string>;
 
   if (req.url === '/endurance') {
-    sampleGenerator = generatorFromJsonSample('../sample/endurance-timing.json');
+    sampleGenerator = generatorFromJsonSample('./sample/endurance-timing.json');
   } else if (req.url === '/training-1') {
-    sampleGenerator = generatorFromJsonSample('../sample/pre-endurance-trainings-20-55.json')
+    sampleGenerator = generatorFromJsonSample('./sample/pre-endurance-trainings-20-55.json')
   } else if (req.url === '/training-2') {
-    sampleGenerator = generatorFromJsonSample('../sample/pre-endurance-trainings-21-21.json')
+    sampleGenerator = generatorFromJsonSample('./sample/pre-endurance-trainings-21-21.json')
   } else if (req.url === '/race') {
-    sampleGenerator = generatorFromLogSample('../sample/race-22-10-2023.log')
+    sampleGenerator = generatorFromLogSample('./sample/race-22-10-2023.log')
   } else {
     console.error("No sample found for this URL");
     return ws.close();
@@ -45,7 +45,7 @@ wss.on('connection', function connection(ws, req) {
         }
 
         ws.close();
-      }, 500);
+      }, 100);
     }
   });
 });

@@ -3,7 +3,7 @@ import { createInterface } from 'readline';
 import path from 'path';
 
 export async function* generatorFromJsonSample(filePath: string): AsyncGenerator<string> {
-  const sample = require(path.join(__dirname, filePath));
+  const sample = require(path.join(__dirname, '../..', filePath));
 
   for (let messageId = 1; messageId < sample._webSocketMessages.length; messageId++) {
     yield sample._webSocketMessages[messageId].data;
@@ -11,7 +11,7 @@ export async function* generatorFromJsonSample(filePath: string): AsyncGenerator
 }
 
 export async function* generatorFromLogSample(filePath: string): AsyncGenerator<string> {
-  const stream = createReadStream(path.join(__dirname, filePath));
+  const stream = createReadStream(path.join(__dirname, '../..', filePath));
 
   const rl = createInterface({
     input: stream,
