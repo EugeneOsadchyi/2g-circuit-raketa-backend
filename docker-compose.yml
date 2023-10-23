@@ -1,7 +1,14 @@
 version: '3'
 
 services:
-  app:
+  scraper:
     build: .
+    command: npm start
     volumes:
       - ./logs:/app/logs
+
+  mock-server:
+    build: .
+    command: npm run mock-server
+    ports:
+      - 10015:8080
