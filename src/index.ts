@@ -7,9 +7,9 @@ const logDirectory = path.join(__dirname, '../logs');
 fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory);
 
 const stream = createStream('websocket-messages.log', {
-  rotate: 600000, // Rotate the log file every 10 minutes (600,000 milliseconds)
+  rotate: 3600000, // Rotate the log file every 60 minutes (3,600,000 milliseconds)
   path: logDirectory,
-  size: '10M', // limit file size to 10MB
+  size: '100M', // limit file size to 100MB
   compress: 'gzip', // Compress old log files
 });
 
