@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import { createStream } from 'rotating-file-stream';
 
-const logDirectory = path.join(__dirname, '../logs');
+const logDirectory = path.join(__dirname, '../logs/2g-circuit');
 fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory);
 
 const stream = createStream('websocket-messages.log', {
