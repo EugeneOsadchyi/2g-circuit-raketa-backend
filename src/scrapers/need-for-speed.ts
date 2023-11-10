@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { createStream } from 'rotating-file-stream';
 
-const logDirectory = path.join(__dirname, '../logs/need-for-speed');
+const logDirectory = path.join(__dirname, '../../logs/need-for-speed');
 fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory);
 
 const stream = createStream('telemetry.log', {
