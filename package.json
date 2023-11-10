@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node src/index.ts",
+    "2g-scrapper": "ts-node src/scrappers/2g-circuit.ts",
+    "nfs-scrapper": "ts-node src/scrappers/need-for-speed.ts",
     "mock-server": "ts-node src/mock-server.ts"
   },
   "keywords": [],
