@@ -1,9 +1,15 @@
 version: '3'
 
 services:
-  scraper:
+  2g-scraper:
     build: .
-    command: npm start
+    command: npm run 2g-scraper
+    volumes:
+      - ./logs:/app/logs
+
+  nfs-scraper:
+    build: .
+    command: npm run nfs-scraper
     volumes:
       - ./logs:/app/logs
 
