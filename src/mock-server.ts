@@ -45,7 +45,7 @@ wss.on('connection', function connection(ws, req) {
         }
 
         ws.close();
-      }, 100);
+      }, 900);
     }
   });
 });
